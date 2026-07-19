@@ -1,0 +1,2036 @@
+﻿
+
+ SOFTWARE ARCHITECTURE AND DESIGN
+
+PART 1
+Project Overview and Software Requirement Specification
+
+– Hanoi, July 2026 –
+Table of Contents
+ TOC \h \u \z \t "Heading 1,1,Heading 2,2,Heading 3,3,"I. Project Overview4
+1.1. Project Information4
+1.2. Project Team4
+1.3. Product Background4
+1.4. Major Features4
+1.5. Tools & Infrastructures6
+II. Software Requirement Specification6
+1. Overall Requirement6
+1.1 Context Diagram6
+1.2 Main Workflows7
+1.3. User Requirements8
+1.4 System Functionalities9
+1.5 Entity Relationship Diagram10
+3. Use Case Specifications10
+3.1 <<Feature Name1>>10
+4. Non-Functional Requirements11
+4.1 External Interfaces11
+4.2 Quality Attributes11
+5. Requirement Appendix11
+5.1 Business Rules12
+5.2 Common Requirements12
+5.3 Application Messages List12
+
+Record of Changes
+Date
+	A*M, D
+	In charge
+	Change Description
+	
+27/05/2026
+	A
+	Quantt
+	Update Context Diagram
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+*A - Added M - Modified D - Deleted
+
+I. Project Overview
+1.1. Project Information
+English name: Cinema Management System
+Vietnamese name: Hệ thống quản lý rạp chiếu phim
+Team name: SE1938 NJ - Team 3
+Software type: web
+1.2. Project Team
+StudentID
+	Full Name
+	Role
+	Email
+	
+HE181938
+	 Trần Trung Quân
+	 Leader
+	quantthe181938@fpt.edu.vn 
+	
+HE187228
+	 Ngô Nguyễn Trung Nguyên
+	 Member
+	nguyennnthe187228@fpt.edu.vn
+	
+HE194160
+	 Nguyễn Xuân Thắng
+	 Member
+	ngxuanthang05@gmail.com
+	
+HE181018
+	 Trương Thế Anh
+	 Member
+	anhtthe181018@fpt.edu.vn
+	
+HE186341
+	Trần Tiến Đạt
+	Member
+	datTTHE186341@fpt.edu.vn
+	
+
+1.3. Product Background
+In recent years, the demand for watching movies in cinemas has increased significantly, especially for multi-branch cinema chains. Customers expect convenient services that allow them to easily browse movie information, check showtimes, select seats, and book tickets online.
+However, managing movie schedules, ticket bookings, customer information, and revenue through manual processes or separate systems often leads to inefficiencies and errors. Customers may also experience difficulties when accessing movie information and booking tickets.
+To address these challenges, the Cinema Management System is developed as a centralized platform for both online ticket booking and cinema operation management. The system enables customers to search for movies, view showtimes, and book tickets conveniently. At the same time, it helps staff, managers, and administrators efficiently manage movies, screening schedules, customers, bookings, and business performance.
+
+1.4. Major Features
+
+FE-01: Browse, search, and filter movies available in the cinema system.
+FE-02: View detailed movie information and save movies to a personal favorites list.
+FE-03: Create, update, and maintain movie records.
+FE-04: Book movie tickets online for available showtimes.
+FE-05: View booking history, cancel bookings, and access electronic tickets.
+FE-06: Print/reissue tickets, support seat changes, and manage customer ticket bookings.
+FE-07: View and manage movie showtimes.
+FE-08: View and manage cinema rooms and room list
+FE-09: Purchase and manage food and beverage products.
+FE-10: View revenue reports and overall system statistics.
+1.5. Tools & Infrastructures
+
+Category
+	Tools / Infrastructure
+	
+Technology
+	React  (FrontEnd),  ExpressJS (BackEnd)
+	
+Database
+	MySQL
+	
+API
+	Restful API
+	
+IDEs/Editors
+	Visual Studio Code
+	
+Diagramming
+	Visual paradigm, Draw.io
+	
+Documentation
+	Google Docs/Sheets/Slides
+	
+Version Control
+	Git
+	
+Deployment server
+	
+	
+Test tool
+	Postman
+	
+Project management
+	GitLab (Tasks, Defects), Excel
+	
+
+II. Software Requirement Specification
+
+1. Overall Requirement
+1.1 Context Diagram
+The Cinema Management System is a web-based application that supports the management of multi-branch cinemas. The system allows customers to browse movies, book tickets, and make online payments, while helping staff, managers, and administrators manage cinema operations more effectively. 
+
+1.2 Main Workflows
+1.2.1 Ticket Booking & Payment
+
+1.2.2 Staff Change Seat
+1.3. User Requirements
+1.3.1 Actors
+#
+	Actor
+	Description
+	
+1
+	Customer
+	Customers use the system to browse movies, view showtimes, book tickets, purchase food and drinks, and make online payments. 
+	
+2
+	Staff
+	Staff manage ticket bookings, check tickets, sell food and drinks, and support customers at the cinema branch. 
+	
+3
+	Manager 
+	Managers manage movies, showtimes, cinema rooms, staff, food and drink services, and monitor reports and revenue.
+	
+4
+	Administrator 
+	Administrators manage the entire cinema system, including branches, accounts, permissions, and overall reports and statistics. 
+	
+5
+	Payment Service 
+	The external payment service processes online payment transactions and returns payment confirmation to the system. 
+	
+6
+	Email Service  
+	Sends OTP and notification emails to users. 
+	
+7
+	Guest 
+	Guests can browse movies, search movies, and view showtimes without creating an account or logging into the system. 
+	
+
+1.3.2 Use Case List (UC)
+ID
+	Use Case
+	Feature
+	Use Case Description
+	
+UC- 01
+	Register Account 
+	User Management 
+	Customers create a new account to access system services. 
+	
+UC-02
+	Login System 
+	Authentication 
+	Users log into the system using their accounts
+	
+UC-03
+	View Movies List
+	Movie Management 
+	Customers browse available movies and movie information. 
+	
+UC-04
+	Search Movies 
+	Movie Management 
+	Customers search for movies by name or category. 
+	
+UC-05
+	View Showtimes 
+	Showtime Management 
+	Customers view movie schedules and available showtimes. 
+	
+UC-06
+	Cancel Booking 
+	Ticket Booking 
+	Customers cancel booked tickets before the showtime.. 
+	
+UC-07
+	Book Tickets 
+	Ticket Booking 
+	Customers select seats and book movie tickets online.  
+	
+UC-08
+	Purchase Food & Drinks 
+	Food & Beverage Management 
+	Customers order food and drinks with tickets. 
+	
+UC-09
+	Make Payment 
+	Payment Management 
+	Customers make online payments for bookings. 
+	
+UC-10
+	View Booking History 
+	Booking Management 
+	Customers view their previous bookings and transactions. 
+	
+UC-11
+	Manage Ticket Booking 
+	Booking Management 
+	Staff manage ticket bookings and support customer requests. 
+	
+UC-12
+	Check Tickets 
+	Ticket Validation 
+	Staff verify customer tickets before movie entry. 
+	
+UC-13
+	Sell Food & Drinks 
+	Food & Beverage Management 
+	Staff process food and drink orders at the cinema. 
+	
+UC-14
+	Manage Movies 
+	Movie Management 
+	Branch Managers add, update, or remove movie information. 
+	
+UC-15
+	Manage Showtimes 
+	Showtime Management 
+	Branch Managers create and update movie schedules. 
+	
+UC-16
+	Manage Cinema Rooms 
+	Cinema Room Management 
+	Branch Managers manage screening rooms and seating layouts. 
+	
+UC-17
+	Manage Staff 
+	Staff Management 
+	Branch Managers manage staff information and assignments. 
+	
+UC-18
+	View Revenue Reports 
+	Reporting & Statistics 
+	Branch Managers view branch revenue reports and financial statistics. 
+	
+UC-19
+	Manage System Accounts 
+	System Administration 
+	Administrators manage user accounts and permissions. 
+	
+UC-20
+	Manage Roles & Permissions 
+	System Administration 
+	Administrators create roles and manage access permissions for system users. 
+	
+UC-21
+	View Movie Details 
+	Movie Management 
+	Customers view detailed information about a selected movie including synopsis, genre, duration, cast, trailer and rating. 
+	
+UC-22
+	View System Reports
+	Reporting & Statistics 
+	Administrators view overall reports and system statistics. 
+	
+UC-23
+	Process Payment 
+	Payment Integration 
+	Payment Service processes payment transactions and returns payment status. 
+	
+UC-24
+	Manage Food & Drinks 
+	Food & Beverage Management 
+	Branch Managers manage food and drink items, prices, and availability.
+	
+UC-25
+	Verify OTP 
+	Authentication 
+	Users verify OTP codes sent to their email for account verification or password recovery. 
+	
+UC-26
+	Send Booking Confirmation 
+	Notification Management 
+	The system sends booking confirmation notifications to customers after successful ticket booking, payment, or booking cancellation. .
+	
+UC-27
+	Forgot Password 
+	Authentication 
+	Users request password recovery and reset their password through email OTP verification. 
+	
+UC-28
+	Filter Movies 
+	Movie Management 
+	Customers filter movies by genre, language, release date, rating, or status. 
+	
+UC-29
+	Select Showtime 
+	Ticket Booking 
+	Customers choose a preferred showtime before booking tickets. 
+	
+UC-30
+	Select Seats 
+	Ticket Booking 
+	Customers select available seats for the chosen showtime. 
+	
+UC-31
+	View Ticket Details 
+	Ticket Booking 
+	Customers review ticket information before confirming their booking. 
+	
+UC-32
+	View E-Ticket 
+	Ticket Booking 
+	Customers view and download electronic tickets after successful payment. 
+	
+UC-33
+	Add Movie to Favorites 
+	Movie Management 
+	Customers save movies to their favorites list for future viewing. 
+	
+UC-34
+	Choose Food Type 
+	Food & Beverage Management 
+	Customers select food items and quantity when purchasing food and drinks. 
+	
+UC-35
+	Choose Drink Type 
+	Food & Beverage Management 
+	Customers select drink items and quantity when purchasing food and drinks. 
+	
+UC-36
+	Print/Reissue Tickets 
+	Ticket Booking 
+	Staff print or reissue physical tickets for customers. 
+	
+UC-37
+	Change seat
+	Ticket Booking
+	Staff assists customers in changing their selected seats for the same showtime 
+	
+UC-38
+	View Room Layout 
+	Cinema Room Management 
+	Staff views the real-time seating layout and seat status of a specific cinema room. 
+	
+…
+1.3.3 Use Case Diagrams
+1.3.3.1 UCs for OverView
+
+1.3.3.2 UCs for Guest
+
+1.3.2.3 UCs for Customer
+
+1.3.2.4 UCs for Staff
+
+1.3.2.5 UCs for Manager
+
+1.3.2.6 UCs for Administrator
+
+1.4 System Functionalities
+1.4.1 Screens Flow
+
+1.4.2 Screen Authorization
+Screen
+	Customer 
+	Staff 
+	Manager 
+	Admin
+	
+Home Page / Movie Details 
+	X
+	X
+	X
+	X
+	
+Login / Register / Forgot Password Screen 
+	X
+	X
+	X
+	X
+	
+OTP Activate / OTP Reset / Reset Password 
+	X
+	X
+	X
+	X
+	
+Dashboard 
+	X
+	
+	
+	
+	
+User Profile / Booking History 
+	X
+	
+	
+	
+	
+E-Ticket / Cancel Booking 
+	X
+	
+	
+	
+	
+Showtime Selection / Seat Selection 
+	X
+	
+	
+	
+	
+Food & Drinks Combo / Booking Summary 
+	X
+	
+	
+	
+	
+Payment Gateway Interface / Success & E-Ticket 
+	X
+	
+	
+	
+	
+Management Dashboard 
+	
+	X
+	X
+	X
+	
+Staff Dashboard 
+	
+	X
+	
+	
+	
+Ticket Validation / Counter F&B Sales 
+	
+	X
+	
+	
+	
+Ticket Print / View Real-time Room Layout 
+	
+	X
+	
+	
+	
+Manager Dashboard 
+	
+	
+	X
+	
+	
+Movie Management / Showtime Management 
+	
+	
+	X
+	
+	
+Staff Management  / Cinema Room Management 
+	
+	
+	X
+	
+	
+F&B Item Management / Branch Revenue Report 
+	
+	
+	X
+	
+	
+Admin Dashboard 
+	
+	
+	
+	X
+	
+Account & Permissions 
+	
+	
+	
+	X
+	
+Roles & Access Control 
+	
+	
+	
+	X
+	
+System-wide Statistics 
+	
+	
+	
+	X
+	
+
+1.4.3 Non-UI Functions
+#
+	Feature
+	System Function
+	Description
+	
+1
+	Authentication 
+	Login Authentication 
+	Validates user credentials and grants access to the system. 
+	
+2
+	Authentication 
+	Account Registration Processing 
+	Processes new user registration information before account creation. 
+	
+3
+	Authentication 
+	OTP Verification 
+	Verifies OTP codes during account activation and password reset processes. 
+	
+4
+	Authentication 
+	Password Reset Processing 
+	Validates and updates user passwords after successful verification. 
+	
+5
+	User Management 
+	User Profile Retrieval 
+	Retrieves and loads user profile information from the database. 
+	
+6
+	Booking Management 
+	Booking History Retrieval 
+	Retrieves booking records for users to view their booking history. 
+	
+7
+	Ticket Booking 
+	Showtime Availability Validation 
+	Validates selected showtime information before booking. 
+	
+8
+	Ticket Booking 
+	Seat Availability Validation 
+	Checks seat availability and prevents duplicate bookings. 
+	
+9
+	Ticket Booking 
+	Combo Price Calculation 
+	Calculates prices of selected food and drink combos. 
+	
+10
+	Ticket Booking 
+	Booking Information Processing 
+	Processes booking details before payment confirmation. 
+	
+11
+	Payment 
+	Payment Transaction Processing 
+	Handles transaction requests through the payment gateway. 
+	
+12
+	Payment 
+	Payment Status Verification 
+	Verifies payment results before completing ticket issuance. 
+	
+13
+	Ticket Management 
+	E-Ticket Generation 
+	Generates electronic tickets after successful payment. 
+	
+14
+	Booking Management 
+	Booking Cancellation Processing 
+	Updates booking status and releases reserved seats after cancellation. 
+	
+15
+	Ticket Management 
+	Ticket Validation Service 
+	Validates ticket information during entry checking. 
+	
+16
+	Cinema Room Management 
+	Real-time Seat Synchronization 
+	Updates room layout and seat status in real time. 
+	
+17
+	Movie Management 
+	Movie Information Processing 
+	Processes movie information for display and management. 
+	
+18
+	Showtime Management 
+	Showtime Schedule Validation 
+	Validates showtime schedules and prevents scheduling conflicts. 
+	
+19
+	Reporting & Analytics 
+	Revenue Report Generation 
+	Generates branch revenue reports from ticket and F&B sales data. 
+	
+20
+	Dashboard & Statistics 
+	Dashboard Data Aggregation 
+	Collects and summarizes system data for dashboard statistics. 
+	
+ 
+
+1.5 Entity Relationship Diagram
+ 
+Entities Description
+#
+	Entity
+	Description
+	
+1
+	Roles 
+	Defines system roles such as ADMIN, STAFF, CUSTOMER 
+	
+2
+	Users 
+	Stores user account information including login credentials and profile 
+	
+3
+	UserFavorites 
+	Stores movies that users mark as favorites (many-to-many relationship) 
+	
+4
+	Movies 
+	Stores movie information such as title, genre, duration, and status 
+	
+5
+	Cinemas 
+	Stores cinema branch information 
+	
+6
+	Rooms 
+	Stores cinema rooms inside each cinema 
+	
+7
+	Seats 
+	Stores seat layout for each room (row, number, type) 
+	
+8
+	Showtimes 
+	Stores movie screening schedules including time and price 
+	
+9
+	Bookings 
+	Stores ticket booking information made by users 
+	
+10
+	TicketDetails 
+	Stores detailed ticket information including selected seats and price per seat 
+	
+11
+	FoodItems 
+	Stores food, drink, and combo products available for sale 
+	
+12
+	FoodOrders 
+	Stores food orders made by users (can be linked with booking or standalone) 
+	
+13
+	FoodOrderDetails 
+	Stores detailed items inside each food order (quantity, price) 
+	
+14
+	Payments 
+	Stores payment transactions for bookings or food orders 
+	
+15
+	Notifications 
+	Stores system notifications sent to users (booking confirmation, updates, etc.) 
+	
+
+3. Use Case Specifications
+3.1 Movie Management
+3.1.1. View Movies List
+
+ID and Name
+	UC03 – View Movies List
+	
+Created by
+	Nguyễn Xuân Thắng
+	
+Primary Actor
+	Customer,Guest
+	Secondary Actor
+	None
+	
+Description
+	Users browse available movies currently showing or coming soon in the cinema system. 
+	
+Preconditions
+	The system contains at least one movie. 
+	
+Main Sequence
+	User accesses the Movie List page.
+System retrieves all available movies.
+System displays movie cards including poster, title, genre, duration, and rating.
+User selects a movie.
+System displays movie details including description, cast, trailer, release date, and available showtimes.
+
+	
+Alternative Sequences
+	2a. No movies available
+System displays message: "No movies available."
+5a. Movie details unavailable
+System displays an error message.
+	
+Post conditions
+	Movie information is displayed successfully. 
+	
+Business Rule
+	BR-10 
+	
+
+3.1.2. Search Movies
+
+ID and Name
+	UC04 – Search Movies 
+	
+Created by
+	Nguyễn Xuân Thắng
+	
+Primary Actor
+	Customer,Guest
+	Secondary Actor
+	None
+	
+Description
+	Users search for movies by title or keyword.
+	
+Preconditions
+	The user is on the Movie List page. 
+	
+Main Sequence
+	User enters a keyword or selects search filters.
+User clicks the Search button.
+System validates the search criteria.
+System searches the movie database.
+System displays matching movies.
+
+	
+Alternative Sequences
+	3a. Search field is empty
+System displays all available movies.
+5a. No matching movies found
+System displays message: "No search results found."
+	
+Post conditions
+	Matching movies are displayed. 
+	
+Business Rule
+	BR-10 
+	
+
+3.1.3. Manage Movies
+
+ID and Name
+	UC14 – Manage Movies 
+	
+Created by
+	Nguyễn Xuân Thắng
+	
+Primary Actor
+	Branch Manager 
+	Secondary Actor
+	None
+	
+Description
+	Branch Managers add, update, and remove movie information in the cinema management system. 
+	
+Preconditions
+	Branch Manager has logged into the system successfully. 
+	
+Main Sequence
+	1. Branch Manager accesses the Movie Management page.
+2. System displays the movie list.
+3. Branch Manager selects Add, Update, or Delete Movie.
+4. Branch Manager enters or edits movie information.
+5. System validates the input data.
+6. System saves or updates movie information.
+7. System displays a success notification. 
+	
+Alternative Sequences
+	4a. Invalid or incomplete movie information is entered.
+- System displays an error message.
+- Branch Manager re-enters valid information. 
+
+	
+Post conditions
+	Movie information is added, updated, or deactivated successfully in the system database. 
+	
+Business Rule
+	
+	
+
+3.2 Showtime Management
+3.2.1 View Showtimes
+
+ID and Name
+	UC05 – View Showtimes 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Customer, Guest 
+	Secondary Actor
+	System
+	
+Description
+	Users view movie schedules, available showtimes, cinema rooms, and ticket availability for selected movies. 
+	
+Preconditions
+	The system contains available movies and showtime schedules.
+User has accessed the movie details page or showtime page.
+	
+Main Sequence
+	User selects a movie from the movie list or movie details page.
+The system retrieves available showtimes for the selected movie.
+The system displays showtime information, including:
+Movie title
+Date
+Start time
+Cinema branch
+Cinema room
+Available seats
+User filters showtimes by date, branch, or time period.
+The system updates and displays matching showtimes.
+User selects a showtime to view more details.
+The system displays detailed showtime information and seat availability.
+	
+Alternative Sequences
+	2a. No showtimes available
+The system displays the message:"No showtimes available for this movie."
+4a. Invalid filter criteria
+The system ignores invalid criteria and displays available showtimes.
+7a. Showtime information cannot be loaded
+The system displays the message:"Unable to load showtime information."
+ 
+	
+Post conditions
+	Showtime information is displayed successfully.
+Users can proceed to ticket booking if seats are available.
+	
+Business Rule
+	BR-05, BR-10, BR-14 
+	
+
+3.2.2 Manage Showtimes
+
+ID and Name
+	UC15 – Manage Showtimes 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Branch Manager 
+	Secondary Actor
+	System
+	
+Description
+	Branch Manager creates, updates, deletes, or views movie showtimes, including managing schedules, cinema rooms, and seat availability for each movie screening. 
+	
+Preconditions
+	Branch Manager is logged into the system.
+Movies and cinema rooms already exist in the system.
+	
+Main Sequence
+	Branch Manager navigates to the "Showtime Management" section.
+The system displays the current list of showtimes with details (Movie, Date, Time, Cinema Room, Status).
+Branch Manager selects an action: Create Showtime, Update Showtime, Delete Showtime, or View Showtime Details.
+Branch Manager enters or modifies showtime information:
+Movie
+Cinema Room
+Date
+Start Time
+End Time
+Status
+Branch Manager clicks "Save/Confirm".
+The system validates the input data.
+The system saves the changes to the database.
+The system displays the message:"Showtime information updated successfully."
+	
+Alternative Sequences
+	6a. Invalid showtime information
+The system displays the message:"Invalid input. Please check date, time, or cinema room."
+The system highlights invalid fields for correction.
+6b. Showtime conflicts with an existing schedule
+The system displays the message:"The selected cinema room already has a scheduled showtime during this period."
+Branch Manager must choose another room or time.
+3a. Branch Manager deletes a showtime that already has bookings
+The system displays the message:"Cannot delete this showtime because tickets have already been booked."
+The system suggests changing the status to "Cancelled" instead of deleting.
+	
+Post conditions
+	Showtime information is successfully added, updated, or removed.
+Updated showtimes are immediately reflected on the customer booking system.
+Cinema room schedules are updated accordingly.
+Users can proceed to ticket booking if seats are available.
+	
+Business Rule
+	BR-02, BR-10, BR-11, BR-14, BR-15 .
+	
+
+3.3 Ticket Booking Management
+3.3.1 Book Tickets
+
+ID and Name
+	UC07 – Book Tickets 
+	
+Created by
+	Trần Trung Quân 
+	
+Primary Actor
+	Customer
+	Secondary Actor
+	None
+	
+Description
+	Customers select movie showtimes, choose seats, and book movie tickets online. 
+	
+Preconditions
+	Customer has logged into the system. 
+Movie and showtime are available. 
+	
+Main Sequence
+	Customer selects a movie.
+System displays available showtimes.
+Customer selects a showtime.
+System displays available seats.
+Customer selects seats.
+Customer optionally selects food and drinks.
+System calculates total price.
+Customer confirms booking information.
+System redirects customer to payment process.
+System records booking information.
+System sends booking confirmation.
+	
+Alternative Sequences
+	5a. Selected seats are unavailable 
+System displays message: "Selected seats are already booked." 
+6a. Customer skips food and drinks 
+System continues ticket booking process. 
+9a. Payment fails  
+System displays message: "Payment unsuccessful." 
+	
+Post conditions
+	Booking information is saved successfully. 
+Selected seats are reserved.
+Customer receives booking confirmation.
+	
+Business Rule
+	BR-01, BR-02, BR-04, BR-05, BR-07 
+	
+
+3.3.2 Cancel Booking
+
+ID and Name
+	UC06 – Cancel Booking 
+	
+Created by
+	Trần Trung Quân 
+	
+Primary Actor
+	Customer
+	Secondary Actor
+	None
+	
+Description
+	Customers cancel booked tickets before the movie showtime. 
+	
+Preconditions
+	Customer has an existing booking.
+Showtime has not started.
+	
+Main Sequence
+	Customer opens booking history.
+System displays booked tickets.
+Customer selects a booking.
+Customer clicks Cancel Booking.
+System verifies cancellation conditions.
+System cancels booking.
+System updates seat availability.
+System sends cancellation confirmation.
+	
+Alternative Sequences
+	5a. Showtime already started
+System displays message: "Booking cannot be cancelled."
+5b. Booking does not exist
+System displays message: "Booking not found."
+	
+Post conditions
+	Booking is cancelled successfully.
+Seats become available again.
+	
+Business Rule
+	BR-08, BR-14 
+
+	
+
+3.3.3 Manage Ticket Booking
+
+ID and Name
+	UC11 – Manage Ticket Booking  
+	
+Created by
+	Trần Trung Quân 
+	
+Primary Actor
+	Staff 
+	Secondary Actor
+	None
+	
+Description
+	Staff manage customer ticket bookings and support booking-related requests at the cinema branch.  
+	
+Preconditions
+	Staff has logged into the system.  
+	
+Main Sequence
+	Staff accesses booking management page.
+System displays booking list.
+Staff searches booking information.
+Staff selects a booking.
+Staff updates or confirms booking information.
+System saves updated booking details.
+System displays successful update message.
+
+	
+Alternative Sequences
+	3a. Booking not found
+System displays message: "No booking found." 
+5a. Invalid booking information
+System displays validation error message.
+	
+Post conditions
+	Booking information is saved successfully. 
+Selected seats are reserved.
+Customer receives booking confirmation.
+	
+Business Rule
+	BR-01, BR-05, BR-07, BR-15 
+
+	
+
+3.3.4 View Booking History
+
+ID and Name
+	UC10 - View Booking History 
+	
+Created by
+	Ngô Nguyễn Trung Nguyên
+	
+Primary Actor
+	Customer 
+	Secondary Actor
+	System 
+	
+Description
+	Customer views booking history, including booked tickets, movie information, showtime details, seat information, and booking status.  
+	
+Preconditions
+	The customer has logged into the system. 
+	
+Main Sequence
+	Customer accesses booking history page.
+The system retrieves customer booking records.
+The system displays a booking history list.
+Customer selects a booking record.
+System displays detailed booking information:
+Movie name
+Showtime
+Seats
+Booking date
+Payment status
+Customer reviews booking details. 
+
+	
+Alternative Sequences
+	2a. No booking history found 
+The system displays a message: "No booking history available." 
+5a. System failed to load booking details 
+The system displays a message: "Unable to load booking information." 
+	
+Post conditions
+	Booking history is displayed successfully.
+Customers can review previous booking information.
+	
+Business Rule
+	BR-01, BR-02 
+	
+
+3.3.5 Check Tickets
+
+ID and Name
+	UC12 – Check Tickets 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Staff 
+	Secondary Actor
+	System 
+	
+Description
+	Staff verify customer tickets before allowing entry into the cinema using QR code or ticket ID. 
+	
+Preconditions
+	Staff has logged into the system
+Ticket exists in system
+	
+Main Sequence
+	Staff opens Ticket Validation screen
+System activates QR scanner
+Customer presents ticket QR code
+System reads ticket information
+System validates ticket status
+System displays ticket result
+Staff allows or denies entry
+	
+Alternative Sequences
+	4a. Invalid QR code → System shows “Invalid ticket”
+5a. Ticket already used → System shows “Ticket has already been used”
+5b. Ticket not found → System shows error 
+	
+Post conditions
+	Ticket status updated as “Used”
+Entry decision recorded
+
+	
+Business Rule
+	BR-09, BR-15 
+.
+	
+
+3.4 Food & Beverage Management
+3.4.1 Purchase Food & Drinks
+
+ID and Name
+	UC08 – Purchase Food & Drinks 
+	
+Created by
+	Trần Tiến Đạt
+	
+Primary Actor
+	Customer 
+	Secondary Actor
+	None
+	
+Description
+	Customers select and purchase snacks, popcorn, and drinks to accompany their movie experience (either during ticket booking or as a separate purchase). 
+	
+Preconditions
+	The customer is logged into the system.
+Food & Drink items are available in the system inventory.
+	
+Main Sequence
+	1. Customer navigates to the "Food & Drinks" section (or reaches this step during the booking flow).
+2. The system displays a list of available food, drinks, and combo packages with prices.
+3. The customer selects the desired items and adjusts the quantities.
+4. Customer clicks "Add to Cart/Proceed to Payment".
+5. System verifies item availability in stock.
+6. The system calculates the total amount and displays the order summary.
+7. The system processes the payment transaction.
+8. The system generates a food order receipt (with a unique QR/Barcode) and sends a confirmation to the customer.
+	
+Alternative Sequences
+	5a. Item is out of stock
+System displays message: "Selected item is currently unavailable."
+The system updates the available quantity on the interface.
+7a. Payment failed
+System displays message: "Payment transaction unsuccessful. Please try again."
+The system returns the customer to the payment selection step.
+	
+Post conditions
+	-Food & drink order is successfully created and linked to the customer's account.-System inventory count for the purchased items is deducted.-Customers receives a confirmation receipt/QR code for pickup at the counter.
+
+	
+Business Rule
+	BR-06, BR-07 .
+	
+
+3.4.2 Sell Food & Drinks
+
+ID and Name
+	UC-13 – Sell Food & Drinks 
+	
+Created by
+	Trần Tiến Đạt
+	
+Primary Actor
+	Staff 
+	Secondary Actor
+	None
+	
+Description
+	Staff processes and sells popcorn, drinks, and combos directly to customers at the theater counter, or handles instant orders. 
+	
+Preconditions
+	-Staff is logged into the POS (Point of Sale) system.-Food & Drink items are updated and available in the inventory.
+	
+Main Sequence
+
+	1. Staff navigates to the "POS - Food & Drinks" counter interface.2. Staff selects the items and quantities based on the customer's request.
+3. The system calculates the total price, taxes, and applies active promotions (if any).4. Staff clicks "Proceed to Checkout".5. System verifies item availability in stock.6. Staff selects the payment method (Cash, Card, or E-wallet scan).7. The system records the successful transaction and updates the inventory count.8. The system prints a physical receipt/pickup slip for the customer.
+	
+Alternative Sequences
+	5a. Item is out of stock
+System displays alert: "Item [Name] is out of stock."
+Staff informs the customer and suggests an alternative item or combo.
+6a. Payment via Card/E-wallet failed
+System displays error: "Transaction timed out or denied."
+Staff asks the customer for an alternative payment method.
+	
+Post conditions
+	-The sale transaction is successfully logged into the system revenue report.
+-Inventory levels are deducted instantly.
+-Customers receives their physical food & drink items and receipt.
+
+	
+Business Rule
+	BR-15 
+	
+
+3.4.3 Manage Food & Drinks
+
+ID and Name
+	UC-24 – Manage Food & Drinks 
+	
+Created by
+	Trần Tiến Đạt
+	
+Primary Actor
+	Admin / Manager 
+	Secondary Actor
+	None
+	
+Description
+	Admin or Manager adds, updates, deletes, or views food, drink items, and combo packages, including managing their prices and inventory levels. 
+	
+Preconditions
+	Admin/Manager is logged into the Admin Dashboard system. 
+	
+Main Sequence
+	1. Admin navigates to the "Food & Drinks Management" section.2. The system displays the current list of all food, drink items, and combos with their details (Name, Price, Stock, Status).3. Admin selects an action: Create new item, Update existing item, or Delete/Deactivate an item.4. Admin inputs or modifies the item details (Item Name, Category, Price, Stock Quantity, Image URL).5. Admin clicks "Save/Confirm".6. The system validates the inputted data (e.g., price and stock must be positive numbers).7. The system updates the database with the changes.8. The system displays a success message: "Food & Drinks data updated successfully."
+	
+Alternative Sequences
+	6a. Invalid data input
+System displays error message: "Invalid input. Please check required fields, price, or stock levels."
+The system highlights the incorrect fields and keeps the data for Admin to re-enter.
+3a. Admin deletes an item currently in an active combo or order
+System displays alert: "Cannot delete this item as it is linked to active combos/orders."
+System suggests deactivating the item status (Change status to "Unavailable") instead of deleting.
+	
+Post conditions
+	-The food and drink list is successfully modified in the database.-Current changes are immediately reflected on the Customer app (UC-08 ) and Staff POS system (UC-13 ).
+	
+Business Rule
+	BR-11, BR-14, BR-15 
+	
+
+3.5 Cinema Room Management
+3.5.1 Manage Cinema Rooms
+
+ID and Name
+	UC16 – Manage Cinema Rooms 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Branch Manager 
+	Secondary Actor
+	System 
+	
+Description
+	Branch Manager manages cinema rooms including creating, updating, deleting rooms and configuring seat layouts. 
+	
+Preconditions
+	Manager is logged in
+Cinema branch exists
+	
+Main Sequence
+	Manager opens Cinema Room Management
+System displays list of rooms
+Manager selects Add / Edit / Delete
+Manager enters room information (name, seat layout, capacity)
+System validates input
+System saves data
+System updates seat configuration
+	
+Alternative Sequences
+	4a. Invalid room data → System shows error
+6a. Room has active bookings → cannot delete 
+	
+Post conditions
+	Room data is updated successfully
+Seat layout is reflected in booking system
+	
+Business Rule
+	BR-11, BR-15 
+	
+
+3.6 Staff Management
+3.6.1 Manage Staff
+
+ID and Name
+	UC17 – Manage Staff 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Branch Manager 
+	Secondary Actor
+	System 
+	
+Description
+	Manager manages staff accounts, including adding, updating, deleting, and assigning roles. 
+	
+Preconditions
+	Manager logged in
+	
+Main Sequence
+	Open Staff Management page
+System displays staff list
+Manager selects Add / Edit / Remove staff
+Manager enters staff information
+System validates data
+System saves changes
+System updates staff list
+
+	
+Alternative Sequences
+	4a. Invalid data → system shows error
+3a. Staff not found → system displays message 
+	
+Post conditions
+	Staff information updated successfully 
+	
+Business Rule
+	BR-02, BR-03, BR-15 
+	
+
+3.7 Payment Management
+3.7.1 Make Payment
+
+ID and Name
+	UC09 – Make Payment 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Customer 
+	Secondary Actor
+	Payment Gateway 
+	
+Description
+	Customer completes payment for ticket booking or food orders. 
+	
+Preconditions
+	Booking created
+Customer selected payment method
+	
+Main Sequence
+	Customer confirms booking
+System calculates total price
+System redirects to payment gateway
+Customer selects payment method
+Payment gateway processes transaction
+System receives payment response
+System confirms payment success
+System generates e-ticket
+	
+Alternative Sequences
+	5a. Payment failed → system shows failure message
+6a. Timeout → transaction canceled 
+	
+Post conditions
+	Payment recorded
+Ticket generated
+	
+Business Rule
+	BR-06, BR-07, BR-12, BR-13 
+	
+
+3.7.2 Process Payment
+
+ID and Name
+	UC23 – Process Payment
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Payment Service 
+	Secondary Actor
+	System 
+	
+Description
+	External payment service processes transaction and returns result to system. 
+	
+Preconditions
+	Customer has initiated a payment request from the system
+Booking or order information has been created in the system
+Payment request data (amount, order ID, user info) is valid
+System is connected to the payment gateway (API available)
+
+	
+Main Sequence
+	System sends payment request
+Payment service validates transaction
+Payment is processed (bank/wallet)
+Service returns success/failure response
+System updates payment status
+System triggers ticket generation (if success)
+	
+Alternative Sequences
+	3a. Transaction rejected → return failure
+4a. Network error → retry mechanism triggered 
+	
+Post conditions
+	Payment status updated
+System synchronized with payment gateway
+	
+Business Rule
+	BR-12, BR-13 
+	
+
+3.8 Notification Management
+3.8.1 Verify OTP
+
+ID and Name
+	UC25 – Verify OTP 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	User (Customer/Admin/Staff) 
+	Secondary Actor
+	Email Service 
+	
+Description
+	System verifies OTP sent to user email for authentication or password reset. 
+	
+Preconditions
+	OTP sent to user email 
+	
+Main Sequence
+	User enters OTP
+System checks OTP validity
+System verifies expiration time
+System confirms authentication
+System grants access or completes reset
+	
+Alternative Sequences
+	2a. Invalid OTP → error message
+3a. Expired OTP → request resend 
+	
+Post conditions
+	OTP verified successfully
+User authenticated or password reset completed
+	
+Business Rule
+	BR-12 
+	
+
+3.8.2 Send Booking Confirmation
+
+ID and Name
+	UC26 – Send Booking Confirmation 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	System 
+	Secondary Actor
+	Email Service 
+	
+Description
+	System sends booking confirmation after successful booking/payment. 
+	
+Preconditions
+	Customer has completed a successful booking and/or payment
+Booking information exists in the system database
+Customer has a valid email address registered in the system
+Email/Notification service is available and connected
+
+	
+Main Sequence
+	Booking completed
+System generates confirmation data
+System sends email via Email Service
+Email delivered to customer
+System logs notification
+	
+Alternative Sequences
+	3a. Email service failure → retry sending
+4a. Email not delivered → system logs error 
+	
+Post conditions
+	Customer receives confirmation
+Notification stored in system
+	
+Business Rule
+	BR-06, BR-13 
+	
+
+3.9 System Administration
+3.9.1 Manage System Accounts
+
+ID and Name
+	UC19 – Manage System Accounts 
+	
+Created by
+	Ngô Nguyễn Trung Nguyên
+	
+Primary Actor
+	Administrator 
+	Secondary Actor
+	None
+	
+Description
+	Administrator manages system accounts, including creating, updating, deleting, viewing account information, and assigning roles for users in the cinema management system.  
+	
+Preconditions
+	Administrator has logged into the system. 
+	
+Main Sequence
+	Administrator accesses account management page.
+System displays account list.
+Administrator searches or selects an account.
+Administrator performs account management actions:
+Create account
+Update account
+Delete account
+Assign role
+Administrator enters or updates account information.
+The system validates account information.
+The system saves account changes.
+The system displays a successful notification message.
+
+	
+Alternative Sequences
+	3a. Account not found 
+The system displays a message: "No account found." 
+5a. Invalid account information 
+System displays validation error message 
+7a. System update failed 
+The system displays a message: "Unable to update account information." 
+
+	
+Post conditions
+	Account information is updated successfully.
+User roles are assigned correctly.
+Account list is refreshed with updated data
+
+	
+Business Rule
+	BR-02, BR-03, BR-15 
+
+	
+
+3.9.2 Manage Roles & Permissions 
+
+ID and Name
+	UC20 - Manage Roles & Permissions 
+	
+Created by
+	Ngô Nguyễn Trung Nguyên
+	
+Primary Actor
+	Administrator 
+	Secondary Actor
+	None
+	
+Description
+	Administrator manages system roles and permissions, including assigning roles and controlling access rights for users in the cinema management system. 
+	
+Preconditions
+	Administrator has logged into the system. 
+	
+Main Sequence
+	Administrator accesses role and permission management page.
+The system displays role list and permission settings.
+Administrator selects a role.
+System displays current permissions of the selected role.
+Administrator updates role permissions or assigns a role to a user.
+System validates permission settings.
+The system saves updated role and permission information.
+The system displays a successful update message.
+
+	
+Alternative Sequences
+	3a. Role not found 
+The system displays a message: "Role not found." 
+5a. Invalid permission configuration 
+The system displays a validation error message. 
+7a. System update failed 
+The system displays a message: "Unable to update role and permission settings." 
+	
+Post conditions
+	Role information is updated successfully.
+Permissions are assigned correctly.
+User access rights are updated in the system.
+	
+Business Rule
+	BR-02, BR-14, BR-15 
+	
+
+3.10 Reporting & Statistics3.10.1 View Branch Reports
+
+ID and Name
+	UC18 – View Branch Reports 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Branch Manager 
+	Secondary Actor
+	System 
+	
+Description
+	Manager views revenue and operational reports for a specific branch. 
+	
+Preconditions
+	Manager logged in 
+	
+Main Sequence
+	Manager selects branch report section
+System collects data (tickets, F&B sales)
+System processes revenue statistics
+System displays charts and reports
+	
+Alternative Sequences
+	2a. No data available → show empty report 
+	
+Post conditions
+	Report displayed successfully 
+	
+Business Rule
+	BR-09, BR-15 
+	
+
+3.10.2 View System Reports & Statistics
+
+ID and Name
+	UC22 – View System Reports 
+	
+Created by
+	Trương Thế Anh
+	
+Primary Actor
+	Administrator 
+	Secondary Actor
+	System 
+	
+Description
+	Admin views overall system-wide statistics including revenue, users, bookings, and performance.
+	
+Preconditions
+	Admin logged in
+	
+Main Sequence
+	Manager selects branch report section
+System collects data (tickets, F&B sales)
+System processes revenue statistics
+System displays charts and reports
+	
+Alternative Sequences
+	Admin opens system report dashboard
+System aggregates data from all branches
+System calculates statistics
+System displays dashboards (charts, metrics)
+	
+Post conditions
+	2a. Data loading failure → system retry 
+	
+Business Rule
+	BR-09, BR-15 
+	
+
+4. Non-Functional Requirements
+4.1 External Interfaces
+This section specifies how the cinema management system interacts with users, external hardware, and third-party software systems.
+User Interfaces (UI):
+The system must provide a responsive web interface optimized for both desktop browsers (Google Chrome, Microsoft Edge, Safari) and mobile viewports to ensure seamless navigation across all customer and administrative screens.
+The interface design must strictly follow modern UI/UX guidelines, utilizing intuitive navigation patterns, clear error messages, and visual confirmation for transactional states (e.g., color-coded seating maps).
+Hardware Interfaces:
+Ticket Scanners: The system must interface with handheld or counter-top barcode/QR code scanners at the validation gates to instantly read and parse ticket tokens from the Ticket Validation screen.
+Thermal Ticket Printers: The system must properly format and send raw print jobs to industrial thermal receipt printers at the counter for physical ticket issuance (Ticket Print screen).
+Software & API Interfaces:
+Payment Gateway API: Seamless integration with third-party payment gateways (e.g., VNPay, MoMo, or standard banking APIs) via secure Webhooks to synchronize transactional data from the Payment Gateway Interface.
+Mailing Service API: Integration with automated SMTP or transactional email services (e.g., SendGrid, Mailgun) to instantly dispatch account activation codes, password reset OTPs, and dynamic electronic tickets.
+
+4.2 Quality Attributes
+4.2.1 Usability 
+Learnability: The user interface for the web portal must be intuitive enough that a first-time customer can complete a full movie ticket and combo booking within 3 minutes without external guidance.
+Accessibility: The layout must maintain a high contrast ratio for readable typography, and the real-time seat mapping components must use distinctive shapes or layout structures alongside colors to assist color-blind users.
+Operational Ease: The staff and management dashboards must require minimal data entry, utilizing smart defaults, dropdown selectors, and automated calculations for F&B counter sales and ticket reissuance.
+4.2.2 Reliability 
+System Availability: The cinema management system must maintain an overall uptime of 99.9% during standard operating hours (6:00 AM to 2:00 AM daily), excluding scheduled late-night maintenance windows.
+Fault Tolerance: In the event of a network disruption or payment gateway timeout during a transaction, the system must gracefully recover without losing session data or leaving transactional states corrupted.
+Data Integrity & Recovery: The underlying database must perform automated incremental daily backups. In case of a critical hardware crash, the recovery time objective (RTO) must be under 2 hours, with a recovery point objective (RPO) limiting data loss to less than 1 hour.
+4.2.3 Performance
+Response Time: For standard navigational requests and data queries (such as rendering the Movie Details or filtering showtimes), the system must return data within 1.5 seconds under normal server loads.
+Concurrent Transaction Handling: The booking and checkout processing services must be capable of handling at least 500 concurrent seat-locking and payment transactions simultaneously without performance degradation during peak box-office hours (e.g., blockbusters opening weeks).
+Real-time Synchronization: The live seat layout updates on the View Real-time Room Layout screen must broadcast changes to all active client instances within 500 milliseconds of a seat status change on the database.
+
+4.2.4 Security
+Data Encryption: All sensitive communication, personal identity data, and monetary transactional payloads transmitted between client browsers and the backend servers must be encrypted using Transport Layer Security (TLS 1.3 / HTTPS). Passwords must be hashed using strong cryptographic algorithms (e.g., bcrypt) before database storage.
+Access Control & Session Management: The system must rigorously enforce Role-Based Access Control (RBAC) as defined in the Screen Authorization matrix. Active sessions must automatically expire after 15 minutes of user inactivity, requiring re-authentication to prevent unauthorized access at unattended public or staff terminals.
+Input Validation & Protection: Every input form across all screens (including registration, search queries, and administrative fields) must undergo strict server-side sanitization and structural validation to actively block malicious exploits such as Cross-Site Scripting (XSS) and SQL Injection attacks.
+
+5. Requirement Appendix
+5.1 Business Rules
+
+ID
+	Rule Definition
+	
+BR-01
+	Users must be logged in to access protected functions such as booking tickets and viewing personal information.
+	
+BR-02
+	Users can only access functions permitted by their assigned role (Customer, Staff, Manager, Administrator).
+	
+BR-03
+	Each account must have a unique username and email address.
+	
+BR-04
+	A seat can only be booked by one customer at a time.
+	
+BR-05
+	Seat availability must be updated in real time across the system.
+	
+BR-06
+	E-tickets are generated only after payment is successfully completed.
+	
+BR-07
+	Bookings and payments must be completed within the specified timeout period.
+	
+BR-08
+	Customers can cancel bookings only before the showtime starts.
+	
+BR-09
+	Each ticket can be validated only once.
+	
+BR-10
+	Only active movies, showtimes, and products are visible and available for customers.
+	
+BR-11
+	Entities with historical transaction records cannot be permanently deleted; they may only be deactivated.
+	
+BR-12
+	Sensitive data and payment transactions must be encrypted using secure protocols (e.g., TLS).
+	
+BR-13
+	All payment transactions and critical system actions must be logged for auditing purposes.
+	
+BR-14
+	Changes to bookings, seats, inventory, or permissions must take effect immediately.
+	
+BR-15
+	Only authorized users can perform management functions:
+	
+
+5.2 Common Requirements
+
+ID
+	Rule Definition
+	
+CR-01
+	The system shall be accessible through modern web browsers such as Chrome, Firefox, Edge, and Safari. 
+	
+CR-02
+	The system shall provide role-based access control for Administrator, Manager, Staff, and Customer accounts. 
+	
+CR-03
+	The system shall store all user and transaction data in a centralized database. 
+	
+CR-04
+	The system shall validate all user inputs before processing requests. 
+	
+CR-05
+	The system shall protect user passwords using secure encryption techniques. 
+	
+CR-06
+	The system shall maintain user session information after successful login. 
+	
+CR-07
+	The system shall display date and time information using a consistent format throughout the system. 
+	
+CR-08
+	The system shall support concurrent access by multiple users without data inconsistency. 
+	
+CR-09
+	The system shall automatically update seat availability after booking or cancellation. 
+	
+CR-10
+	The system shall provide appropriate error messages when system operations fail. 
+	
+
+5.3 Application Messages List
+
+#
+	Message code
+	Message Type
+	Context
+	Content
+	
+1
+	MSG01
+	In red, under the text box 
+	Username or password is empty 
+	Username and password are required. 
+	
+2
+	MSG02
+	In red, under the text box 
+	Invalid login credentials 
+	Invalid username or password. 
+	
+3
+	MSG03
+	In red, under the text box 
+	Email already exists during registration 
+	This email is already registered. 
+	
+4
+	MSG04
+	In red, under the text box 
+	OTP verification fails 
+	Invalid or expired OTP code. 
+	
+5
+	MSG05
+	Popup message 
+	Account activation succeeds 
+	Account activated successfully. 
+	
+6
+	MSG06
+	Popup message 
+	Password reset succeeds 
+	Password reset successfully. 
+	
+7
+	MSG07
+	In red, under the text box 
+	Password confirmation does not match 
+	Password confirmation does not match. 
+	
+8
+	MSG08
+	In red, below seat layout 
+	Selected seat is unavailable 
+	This seat is no longer available. 
+	
+9
+	MSG09
+	In red, below seat layout 
+	No seat selected 
+	Please select at least one seat. 
+	
+10
+	MSG10
+	Popup message 
+	Booking information saved 
+	Booking information saved successfully. 
+	
+11
+	MSG11
+	Confirmation dialog 
+	User clicks Cancel Booking 
+	Are you sure you want to cancel this booking? 
+	
+12
+	MSG12
+	Popup message 
+	Booking cancellation succeeds 
+	Booking canceled successfully. 
+	
+13
+	MSG13
+	In line 
+	Booking cannot be canceled 
+	Booking cannot be canceled after showtime starts. 
+	
+14
+	MSG14
+	Popup message 
+	Payment succeeds 
+	Payment completed successfully. 
+	
+15
+	MSG15
+	Popup message 
+	Payment fails 
+	Payment failed. Please try again. 
+	
+16
+	MSG16
+	Popup message 
+	E-ticket generation succeeds 
+	E-ticket generated successfully. 
+	
+17
+	MSG17
+	In red, below QR scanner result 
+	Invalid ticket 
+	Invalid ticket. 
+	
+18
+	MSG18
+	In red, below QR scanner result 
+	Ticket has been used 
+	Ticket has already been used. 
+	
+19
+	MSG19
+	Popup message 
+	Ticket validation succeeds 
+	Ticket validated successfully. 
+	
+20
+	MSG20
+	Popup message 
+	Unauthorized access 
+	You do not have permission to access this function. 
+	
+21
+	MSG21
+	Popup message 
+	System error occurs 
+	System error. Please try again later. 
+	
+
+
