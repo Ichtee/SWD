@@ -50,7 +50,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Temporary & Exam document files
+# Exam instructions, specifications & verification test scripts
+pe_instructions.txt
+srs_part1.txt
+srs_part2.txt
+srs_*.txt
+verify.js
+verify_extended.js
 convert.ps1
 *.docx
 
