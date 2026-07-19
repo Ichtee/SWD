@@ -1,35 +1,60 @@
 # Dependencies
 node_modules/
+**/node_modules/
+.pnpm-store/
 
-# Environment variables
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
 backend/.env
 
-# SQLite database files (development fallback)
-backend/*.sqlite
-backend/*.sqlite3
+# Database files (SQLite DB & locks)
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.db
+backend/database.sqlite
 
-# Build output
+# Build outputs
+dist/
+build/
+out/
 frontend/dist/
 
-# IDE & Editor
+# IDE & Code Editors
 .vscode/
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 *.swp
 *.swo
 *~
 
-# OS files
+# Operating System files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 desktop.ini
-ehthumbs.db
 
-# Logs
+# Logs & Debugging
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Temp/utility files (not part of the project)
+# Temporary & Exam document files
 convert.ps1
+*.docx
 
-# Lock files (optional — remove these lines if you want to track them)
-# package-lock.json
+# Testing & Coverage
+coverage/
+.nyc_output/
+.eslintcache
